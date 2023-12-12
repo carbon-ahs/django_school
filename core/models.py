@@ -26,6 +26,8 @@ class Teacher(models.Model):
     phone_number = models.CharField(_("Phone"), max_length=255, null=True, blank=True)
     picture_url = models.ImageField(
         upload_to="upload_image/",
+        null=True,
+        blank=True,
     )
 
     class Meta:
