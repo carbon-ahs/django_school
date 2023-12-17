@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from core.models import Teacher
 
 
@@ -7,7 +6,7 @@ def say_hello(request):
     context = {
         "test": "TEST",
     }
-    return render(request, "hlw.html", context=context)
+    return render(request, "test/hlw.html", context=context)
 
 
 def test(request):
@@ -32,7 +31,7 @@ def index(request):
         "teacher_count": 15,
         "class_count": 13,
     }
-    return render(request, "core/index.html", context=context)
+    return render(request, "core/home.html", context=context)
 
 
 def teachers(request):
@@ -42,3 +41,15 @@ def teachers(request):
         "teachers": teachers_queary_set,
     }
     return render(request, "core/teachers.html", context=context)
+
+
+def single_teacher(request, pk):
+    try:
+        teacher = Teacher.objects.get(pk=pk)
+    except Teacher.DoesNotExist:
+        teacher = None
+    context = {
+        "test": "TEST",
+        "teacher": teacher,
+    }
+    return render(request, "core/single_teacher.html", context=context)

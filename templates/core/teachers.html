@@ -8,7 +8,7 @@
     <div class="breadcrumbs">
       <div class="container">
         <h2>Our Honarable Teachers</h2>
-        <p>{% lorem 1 b random %} </p>
+        {% comment %} <p>{% lorem 1 b random %} </p> {% endcomment %}
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -46,9 +46,9 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               {% comment %} <img src="{% static 'assets/img/trainers/sakil.jpg' %}" class="img-fluid" alt=""> {% endcomment %}
-              <img src="{{teacher.picture_url.url}}" class="img-fluid" alt="">
+              <img src="{{teacher.picture_url.url}}" style="height:400px; width:400px; object-fit: cover;" alt="">
               <div class="member-content">
-                <h4>{{teacher.name}}</h4>
+                <h4><a href="/teacher/{{ teacher.id }}/">{{teacher.name}}</a></h4>
                 <span>{{teacher.designation}}</span>
                 <div class="social">
                           <a href=""><i class="bi bi-facebook"></i></a>

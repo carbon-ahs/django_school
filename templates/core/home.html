@@ -1,0 +1,132 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+{% include "core/navbar.html" %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>{{school_name}}</h1>
+      <h2>{{thana}}, {{zilla}}</h2>
+      <!-- <a href="courses.html" class="btn-get-started">Get Started</a>  -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'assets/img/group_pic.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>{{description_title}}</h3>
+            <p class="fst-italic">
+              {{description}}
+            </p>
+            <!--<ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>-->
+
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{student_count}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Students</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{class_count}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Classes</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="{{teacher_count}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Teachers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'assets/img/trainers/sakil.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Masum Billah Shakil</h4>
+                <span>Headmaster</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <br>
+                  <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'assets/img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Sarah Jhinson</h4>
+                <span>Marketing</span>
+
+                <div class="social">
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <br>
+                  <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'assets/img/trainers/trainer-3.jpg' %}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>William Anderson</h4>
+                <span>Content</span>
+
+                <div class="social">
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <br>
+                  <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section -->
+
+  </main><!-- End #main -->
+  {% endblock content %}
