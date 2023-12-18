@@ -52,6 +52,19 @@ class Teacher(models.Model):
     def get_absolute_url(self):
         return reverse("Teacher_detail", kwargs={"pk": self.pk})
 
+    @staticmethod
+    def get_all_teachers():
+        return Teacher.objects.all()
+
+    @staticmethod
+    def get_headmaster():
+        try:
+            headmaster = Teacher.objects.filter(designation="Headmaster").values()[0]
+        except Teacher.DoesNotExist:
+            headmaster = None
+
+        return headmaster
+
 
 class School(models.Model):
     """school info"""
@@ -74,3 +87,39 @@ class School(models.Model):
 
     def get_absolute_url(self):
         return reverse("School_detail", kwargs={"pk": self.pk})
+
+    @staticmethod
+    def get_school():
+        try:
+            school = School.objects.get(pk=1)
+        except School.DoesNotExist:
+            school = None
+
+        return school
+
+
+class Notice(models.Model):
+    """Model definition for Notice."""
+
+    title = models.CharField(_("Title"), max_length=50)
+    description = models.TextField(_("Description"), null=True, blank=True)
+    file = models.FileField(
+        _("File"),
+        upload_to="notices/%Y/%m/%d",
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        """Meta definition for Notice."""
+
+        verbose_name = "Notice"
+        verbose_name_plural = "Notices"
+
+    @staticmethod
+    def get_all_notices():
+        return Notice.objects.all()
+
+    def __str__(self):
+        """Unicode representation of Notice."""
+        return str(self.title)
