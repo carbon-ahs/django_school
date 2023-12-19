@@ -75,7 +75,7 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="{{headmaster.picture_url.url}}" class="img-fluid" alt="">
+              <img src="{{headmaster.picture.url}}" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>{{headmaster.name}}</h4>
                 <span>Headmaster</span>
@@ -91,21 +91,21 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="{% static 'assets/img/trainers/trainer-2.jpg' %}" class="img-fluid" alt="">
+              <img src="{{asst_headmaster.picture.url}}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
-
+                <h4>{{asst_headmaster.name}}</h4>
+                <span>asst_headmaster</span>
                 <div class="social">
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
                   <br>
-                  <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                  <a href=""><i class="bi bi-whatsapp"> {{asst_headmaster.phone_number}}</i></a>
                 </div>
               </div>
             </div>
           </div>
 
+          
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="{% static 'assets/img/trainers/trainer-3.jpg' %}" class="img-fluid" alt="">

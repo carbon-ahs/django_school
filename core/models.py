@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -8,12 +9,12 @@ class Teacher(models.Model):
     """model class"""
 
     HEAD_OF_INSTITUTION = "Headmaster"
-    VICE_HEAD_OF_INSTITUTION = "Asstistant Headmaster"
-    TEACHER = "Teacher"
+    VICE_HEAD_OF_INSTITUTION = "Assistant Headmaster"
+    TEACHER = "Asstistant Teacher"
     DESIGNATIONS = [
-        (HEAD_OF_INSTITUTION, HEAD_OF_INSTITUTION),
-        (VICE_HEAD_OF_INSTITUTION, VICE_HEAD_OF_INSTITUTION),
-        (TEACHER, TEACHER),
+        ("HEAD_OF_INSTITUTION", HEAD_OF_INSTITUTION),
+        ("VICE_HEAD_OF_INSTITUTION", VICE_HEAD_OF_INSTITUTION),
+        ("TEACHER", TEACHER),
     ]
 
     name = models.CharField(_("Name"), max_length=254)
@@ -36,7 +37,7 @@ class Teacher(models.Model):
         default="#",
     )
     phone_number = models.CharField(_("Phone"), max_length=255, null=True, blank=True)
-    picture_url = models.ImageField(
+    picture = models.ImageField(
         upload_to="images/",
         null=True,
         blank=True,
@@ -64,6 +65,15 @@ class Teacher(models.Model):
             headmaster = None
 
         return headmaster
+
+    @staticmethod
+    def get_asst_headmaster():
+        try:
+            asst_headmaster = Teacher.objects.get(designation="Assistant Headmaster")
+        except Teacher.DoesNotExist:
+            asst_headmaster = None
+
+        return asst_headmaster
 
 
 class School(models.Model):
@@ -109,6 +119,7 @@ class Notice(models.Model):
         null=True,
         blank=True,
     )
+    publish_date = models.DateTimeField(default=datetime.now(), blank=True)
 
     class Meta:
         """Meta definition for Notice."""

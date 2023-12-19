@@ -15,12 +15,16 @@ def home(request):
 
     # headmaster = Teacher.objects.filter(designation="Headmaster").values()[0]
     headmaster = Teacher.objects.get(designation="Headmaster")
+    # asst_headmaster = Teacher.objects.get(designation="Headmaster")
+    asst_headmaster = Teacher.get_asst_headmaster()
+    print(asst_headmaster)
 
     context = {
         "test": "TEST",
         "school": school,
         "teacher_count": teacher_count,
         "headmaster": headmaster,
+        "asst_headmaster": asst_headmaster,
     }
     return render(request, "core/home.html", context=context)
 
