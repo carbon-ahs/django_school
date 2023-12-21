@@ -87,6 +87,8 @@ class School(models.Model):
     student_count = models.IntegerField(_("Student Count"))
     teacher_count = models.IntegerField(_("Teacher Count"))
     class_count = models.IntegerField(_("Class Count"))
+    phone = models.CharField(_("Phone"), max_length=50, null=True, blank=True)
+    email = models.EmailField(_("Email"), max_length=254, null=True, blank=True)
 
     class Meta:
         verbose_name = _("School")
@@ -133,4 +135,32 @@ class Notice(models.Model):
 
     def __str__(self):
         """Unicode representation of Notice."""
+        return str(self.title)
+
+
+class ClassRoutine(models.Model):
+    """Model definition for ClassRoutine."""
+
+    title = models.CharField(_("Title"), max_length=255)
+    description = models.TextField(_("Description"), null=True, blank=True)
+    file = models.FileField(
+        _("File"),
+        upload_to="ClassRoutine/%Y/%m/%d",
+        null=True,
+        blank=True,
+    )
+    publish_date = models.DateTimeField(default=datetime.now(), blank=True)
+
+    class Meta:
+        """Meta definition for Notice."""
+
+        verbose_name = "Class Routine"
+        verbose_name_plural = "Class Routines"
+
+    @staticmethod
+    def get_all_class_routine():
+        return ClassRoutine.objects.all()
+
+    def __str__(self):
+        """Unicode representation of ClassRoutine."""
         return str(self.title)

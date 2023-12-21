@@ -72,6 +72,31 @@ def single_teacher(request, pk):
     return render(request, "core/single_teacher.html", context=context)
 
 
+def about_us(request):
+    context = {
+        "test": "TEST",
+    }
+    return render(request, "core/about_us.html", context=context)
+
+
+def management_committee(request):
+    school = School.get_school()
+    context = {
+        "test": "management_committee",
+        "school": school,
+    }
+    return render(request, "core/management_committee.html", context=context)
+
+
+def staff_members(request):
+    school = School.get_school()
+    context = {
+        "test": "staff_members",
+        "school": school,
+    }
+    return render(request, "core/staff_members.html", context=context)
+
+
 def notice(request):
     school = School.get_school()
     context = {
@@ -79,6 +104,15 @@ def notice(request):
         "school": school,
     }
     return render(request, "core/notice.html", context=context)
+
+
+def class_routine(request):
+    school = School.get_school()
+    context = {
+        "test": "class_routine",
+        "school": school,
+    }
+    return render(request, "core/class_routine.html", context=context)
 
 
 def say_hello(request):
