@@ -15,9 +15,12 @@
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
             <div class="bg-light p-5 rounded-lg m-3">
-                {% comment %} <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> {% endcomment %}
+                <p class="lead">{{class_routine.title}}</p>
+                <p>Published Date: {{class_routine.publish_date}}</p>
                 <hr class="my-4">
-                <img src={% static 'assets\img\coming_soon.png' %} class="img-fluid" alt="">
+                <a href='{{class_routine.file.url}}'>
+                  <img src={% static 'assets\img\download_img.jpg' %} class="img-fluid" alt="">
+                </a>
                 <hr class="my-4">
                 {% comment %} <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> {% endcomment %}
                 {% comment %} <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> {% endcomment %}

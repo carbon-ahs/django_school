@@ -12,7 +12,7 @@
       <!-- <a href="courses.html" class="btn-get-started">Get Started</a>  -->
     </div>
   </section><!-- End Hero -->
-
+ {% if marquee_flag %} <marquee>This site is under development.</marquee>{% endif %}
   <main id="main">
 
     <!-- ======= About Section ======= -->
@@ -21,7 +21,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="{% static 'assets/img/group_pic.jpg' %}" class="img-fluid" alt="">
+            <img src="{% static 'assets/img/side-img.jpg' %}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>{{school.description_title}}</h3>
@@ -94,7 +94,7 @@
               <img src="{{asst_headmaster.picture.url}}" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>{{asst_headmaster.name}}</h4>
-                <span>asst_headmaster</span>
+                <span>Asst. Headmaster</span>
                 <div class="social">
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
@@ -105,23 +105,24 @@
             </div>
           </div>
 
-          
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="{% static 'assets/img/trainers/trainer-3.jpg' %}" class="img-fluid" alt="">
+              <img src="{{third_teacher.picture.url}}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
-
+                <h4>{{third_teacher.name}}</h4>
+                <span>Asst. Teacher</span>
                 <div class="social">
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
                   <br>
-                  <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                  <a href=""><i class="bi bi-whatsapp"> {{third_teacher.phone_number}}</i></a>
                 </div>
               </div>
             </div>
           </div>
+
+          
+
 
         </div>
 

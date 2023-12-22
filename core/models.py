@@ -4,23 +4,25 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 
-# Create your models here.
 class Teacher(models.Model):
     """model class"""
 
     HEAD_OF_INSTITUTION = "Headmaster"
     VICE_HEAD_OF_INSTITUTION = "Assistant Headmaster"
     TEACHER = "Asstistant Teacher"
+    INSTRUCTOR = "Instuctor"
     DESIGNATIONS = [
         ("HEAD_OF_INSTITUTION", HEAD_OF_INSTITUTION),
         ("VICE_HEAD_OF_INSTITUTION", VICE_HEAD_OF_INSTITUTION),
         ("TEACHER", TEACHER),
+        ("INSTRUCTOR", INSTRUCTOR),
     ]
 
     name = models.CharField(_("Name"), max_length=254)
     designation = models.CharField(
         max_length=255,
         default=TEACHER,
+        choices=DESIGNATIONS,
     )
     fb_link = models.CharField(
         _("Facebook"),
@@ -37,6 +39,7 @@ class Teacher(models.Model):
         default="#",
     )
     phone_number = models.CharField(_("Phone"), max_length=255, null=True, blank=True)
+    email = models.EmailField(_("Email"), max_length=254, null=True, blank=True)
     picture = models.ImageField(
         upload_to="images/",
         null=True,
@@ -58,9 +61,13 @@ class Teacher(models.Model):
         return Teacher.objects.all()
 
     @staticmethod
+    def get_teachers_count():
+        return Teacher.objects.count()
+
+    @staticmethod
     def get_headmaster():
         try:
-            headmaster = Teacher.objects.filter(designation="Headmaster").values()[0]
+            headmaster = Teacher.objects.get(designation="HEAD_OF_INSTITUTION")
         except Teacher.DoesNotExist:
             headmaster = None
 
@@ -69,11 +76,20 @@ class Teacher(models.Model):
     @staticmethod
     def get_asst_headmaster():
         try:
-            asst_headmaster = Teacher.objects.get(designation="Assistant Headmaster")
+            asst_headmaster = Teacher.objects.get(designation="VICE_HEAD_OF_INSTITUTION")
         except Teacher.DoesNotExist:
             asst_headmaster = None
 
         return asst_headmaster
+
+    @staticmethod
+    def get_single_teacher(pk):
+        try:
+            teacher = Teacher.objects.get(pk=pk)
+        except Teacher.DoesNotExist:
+            teacher = None
+
+        return teacher
 
 
 class School(models.Model):
@@ -160,6 +176,10 @@ class ClassRoutine(models.Model):
     @staticmethod
     def get_all_class_routine():
         return ClassRoutine.objects.all()
+
+    @staticmethod
+    def get_recent_class_routine():
+        return ClassRoutine.objects.last()
 
     def __str__(self):
         """Unicode representation of ClassRoutine."""

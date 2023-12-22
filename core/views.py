@@ -1,23 +1,15 @@
 from django.shortcuts import render
-from core.models import Teacher, School
+from django.conf import settings
+from core.models import Teacher, School, ClassRoutine, Notice
 
 
 def home(request):
-    try:
-        school = School.objects.get(pk=1)
-    except School.DoesNotExist:
-        school = None
-
-    try:
-        teacher_count = Teacher.objects.count()
-    except Teacher.DoesNotExist:
-        teacher_count = 20
-
-    # headmaster = Teacher.objects.filter(designation="Headmaster").values()[0]
-    headmaster = Teacher.objects.get(designation="Headmaster")
-    # asst_headmaster = Teacher.objects.get(designation="Headmaster")
+    school = School.get_school()
+    teacher_count = Teacher.get_teachers_count()
+    headmaster = Teacher.get_headmaster()
     asst_headmaster = Teacher.get_asst_headmaster()
-    print(asst_headmaster)
+    third_teacher = Teacher.get_single_teacher(7)
+    marquee_flag = settings.DEBUG
 
     context = {
         "test": "TEST",
@@ -25,6 +17,8 @@ def home(request):
         "teacher_count": teacher_count,
         "headmaster": headmaster,
         "asst_headmaster": asst_headmaster,
+        "third_teacher": third_teacher,
+        "marquee_flag": marquee_flag,
     }
     return render(request, "core/home.html", context=context)
 
@@ -60,10 +54,8 @@ def teachers(request):
 
 def single_teacher(request, pk):
     school = School.get_school()
-    try:
-        teacher = Teacher.objects.get(pk=pk)
-    except Teacher.DoesNotExist:
-        teacher = None
+    teacher = Teacher.get_single_teacher(pk)
+
     context = {
         "test": "TEST",
         "teacher": teacher,
@@ -73,8 +65,10 @@ def single_teacher(request, pk):
 
 
 def about_us(request):
+    school = School.get_school()
     context = {
         "test": "TEST",
+        "school": school,
     }
     return render(request, "core/about_us.html", context=context)
 
@@ -108,9 +102,11 @@ def notice(request):
 
 def class_routine(request):
     school = School.get_school()
+    class_routine = ClassRoutine.get_recent_class_routine()
     context = {
         "test": "class_routine",
         "school": school,
+        "class_routine": class_routine,
     }
     return render(request, "core/class_routine.html", context=context)
 
