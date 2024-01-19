@@ -76,7 +76,9 @@ class Teacher(models.Model):
     @staticmethod
     def get_asst_headmaster():
         try:
-            asst_headmaster = Teacher.objects.get(designation="VICE_HEAD_OF_INSTITUTION")
+            asst_headmaster = Teacher.objects.get(
+                designation="VICE_HEAD_OF_INSTITUTION"
+            )
         except Teacher.DoesNotExist:
             asst_headmaster = None
 
