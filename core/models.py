@@ -12,10 +12,10 @@ class Teacher(models.Model):
     TEACHER = "Asstistant Teacher"
     INSTRUCTOR = "Instuctor"
     DESIGNATIONS = [
-        ("HEAD_OF_INSTITUTION", HEAD_OF_INSTITUTION),
-        ("VICE_HEAD_OF_INSTITUTION", VICE_HEAD_OF_INSTITUTION),
-        ("TEACHER", TEACHER),
-        ("INSTRUCTOR", INSTRUCTOR),
+        ("Headmaster", HEAD_OF_INSTITUTION),
+        ("Assistant Headmaster", VICE_HEAD_OF_INSTITUTION),
+        ("Asstistant Teacher", TEACHER),
+        ("Instuctor", INSTRUCTOR),
     ]
 
     name = models.CharField(_("Name"), max_length=254)
@@ -42,8 +42,6 @@ class Teacher(models.Model):
     email = models.EmailField(_("Email"), max_length=254, null=True, blank=True)
     picture = models.ImageField(
         upload_to="images/",
-        null=True,
-        blank=True,
     )
 
     class Meta:
@@ -67,7 +65,7 @@ class Teacher(models.Model):
     @staticmethod
     def get_headmaster():
         try:
-            headmaster = Teacher.objects.get(designation="HEAD_OF_INSTITUTION")
+            headmaster = Teacher.objects.get(designation=Teacher.HEAD_OF_INSTITUTION)
         except Teacher.DoesNotExist:
             headmaster = None
 
@@ -77,7 +75,7 @@ class Teacher(models.Model):
     def get_asst_headmaster():
         try:
             asst_headmaster = Teacher.objects.get(
-                designation="VICE_HEAD_OF_INSTITUTION"
+                designation=Teacher.VICE_HEAD_OF_INSTITUTION
             )
         except Teacher.DoesNotExist:
             asst_headmaster = None
@@ -102,6 +100,7 @@ class School(models.Model):
     zilla = models.CharField(_("zilla"), max_length=50)
     description_title = models.CharField(_("Desciption Title"), max_length=50)
     description = models.TextField(_("Description"))
+    headmaster_speech = models.TextField(_("Headmaster Speech"), null=True, blank=True)
     student_count = models.IntegerField(_("Student Count"))
     teacher_count = models.IntegerField(_("Teacher Count"))
     class_count = models.IntegerField(_("Class Count"))
@@ -136,8 +135,6 @@ class Notice(models.Model):
     file = models.FileField(
         _("File"),
         upload_to="notices/%Y/%m/%d",
-        null=True,
-        blank=True,
     )
     publish_date = models.DateTimeField(default=datetime.now(), blank=True)
 

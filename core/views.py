@@ -93,9 +93,11 @@ def staff_members(request):
 
 def notice(request):
     school = School.get_school()
+    notice_query_set = Notice.get_all_notices()
     context = {
         "test": "TESTnotice",
         "school": school,
+        "notices": notice_query_set,
     }
     return render(request, "core/notice.html", context=context)
 

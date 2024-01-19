@@ -13,19 +13,19 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
             <th scope="col" class=".th-lg">Title</th>
             <th scope="col">Publish On</th>
             <th scope="col">Download</th>
           </tr>
         </thead>
         <tbody>
+          {% for notice in notices %}
           <tr>
-            <th scope="row">1</th>
-            <td><a href="">Title - Title of test notice</a></td>
-            <td>12/12/12 12:12pm</td>
-            <td><a href=""><i class="bi bi-cloud-download-fill"></i></a></td>
+            <td><a href="">{{ notice.title }}</a></td>
+            <td>{{ notice.publish_date }}</td>
+            <td><a href="{{ notice.file.url }}"><i class="bi bi-cloud-download-fill"></i></a></td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
