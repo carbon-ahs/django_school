@@ -47,66 +47,9 @@
     
     {% endblock content %}
       <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>{{school.name}}</h3>
-            <p>
-              {{school.thana}} <br>
-              {{school.zilla}}
-              <br>
-              Bangladesh<br><br>
-              <strong>Phone:</strong> {{school.phone}} <br>
-              <strong>Email:</strong> {{school.email}}<br>
-            </p>
-          </div>
-
-          {% comment %} <div class="col-lg-2 col-md-6 footer-links">
-            <ul>
-              <h4>Our Services</h4>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url "home" %}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url "about" %}">About Us</a></li>
-            </ul>
-          </div> {% endcomment %}
-          
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.moedu.gov.bd/">Ministry of Education</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://konnect.edu.bd/">Kishor Batayon</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.dhakaeducationboard.gov.bd/">Education Board, Dhaka</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://eboardresults.com/bn/ebr.app/home/">Result [JSC, SSC]</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.moedu.gov.bd/">শিক্ষা মন্ত্রানালয়</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://konnect.edu.bd/">কিশোর বাতায়ন</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://www.dhakaeducationboard.gov.bd/">ঢাকা শিক্ষাবোর্ড</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://eboardresults.com/bn/ebr.app/home/">রেজাল্ট [JSC, SSC]</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="me-md-auto text-center text-md-start">
-        <div class="footer-artwork" id="footer-artwork">&nbsp;</div>
-        <div class="credits">
-          Developed by <a href="https://www.linkedin.com/in/shehanuk-ahsan/">Ahsan Habib</a>
-        </div>
-
-      </div>
-
-    </div>
-  </footer><!-- End Footer -->
+      
+      {% include 'core/footer.html' %} 
+      <!-- End Footer -->
 
 
 
