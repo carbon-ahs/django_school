@@ -1573,7 +1573,7 @@ section {
 }
 
 .footer-artwork {
-  background: url('../assets/img/footer_img.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url('/static/assets/img/footer_img.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
   height: 84px;
   margin: 0 auto;
   width: 1020px;
