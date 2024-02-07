@@ -41,6 +41,16 @@ def home_static(request):
     return render(request, "core/home.html", context=context)
 
 
+def headmaster_speech(request):
+    school = School.get_school()
+
+    context = {
+        "test": "TEST",
+        "school": school,
+    }
+    return render(request, "core/headmaster_speech.html", context=context)
+
+
 def teachers(request):
     school = School.get_school()
     teachers_queary_set = Teacher.objects.all()

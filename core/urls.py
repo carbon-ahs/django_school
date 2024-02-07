@@ -9,6 +9,7 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("headmaster_speech/", views.headmaster_speech, name="headmaster_speech"),
     path("teachers/", views.teachers, name="teachers"),
     path("teacher/<int:pk>/", views.single_teacher, name="single_teacher"),
     path("test/", views.say_hello, name="hlw"),
