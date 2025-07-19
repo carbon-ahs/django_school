@@ -15,5 +15,6 @@ py -m pip install --upgrade pip
 # 4. Install dependencies from requirements.txt
 pip install -r requirements.txt
 
+# 5. Run django server
 py manage.py runserver
 ```

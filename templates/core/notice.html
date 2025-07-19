@@ -19,6 +19,11 @@
           </tr>
         </thead>
         <tbody>
+          {% if not notices %}
+          <tr>
+            <td colspan="3" class="text-center">No notice available</td>
+          </tr>
+          {% endif %}
           {% for notice in notices %}
           <tr>
             <td><a href="">{{ notice.title }}</a></td>
