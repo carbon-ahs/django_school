@@ -1,6 +1,6 @@
 ## Backend part of school site. 
 
-This project usees python 3.12
+This project uses python 3.12
 
 ## Run commands
 
