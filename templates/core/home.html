@@ -65,8 +65,9 @@
     <!-- ======= Teachers Section ======= -->
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
-{% if headmaster %}
+
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% if headmaster %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="{{headmaster.picture.url}}" class="img-fluid" alt="">
@@ -84,8 +85,8 @@
               </div>
             </div>
           </div>
-{% endif %}
-{% if asst_headmaster %}
+          {% endif %}
+          {% if asst_headmaster %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="{{asst_headmaster.picture.url}}" class="img-fluid" alt="">
@@ -101,8 +102,8 @@
               </div>
             </div>
           </div>
-{% endif %}
-{% if third_teacher %}
+          {% endif %}
+          {% if third_teacher %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="{{third_teacher.picture.url}}" class="img-fluid" alt="">
@@ -118,7 +119,7 @@
               </div>
             </div>
           </div>
-{% endif %}
+        {% endif %}
         </div>
 
       </div>
