@@ -19,4 +19,7 @@ pip install -r requirements.txt
 
 # 5. Run django server
 py manage.py runserver
+
+# 6. collect static file
+python manage.py collectstatic
 ```
