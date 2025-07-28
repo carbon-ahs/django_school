@@ -92,6 +92,115 @@ class Teacher(models.Model):
         return teacher
 
 
+#  GEMINI Suggestions
+"""
+from django.db import models
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+
+# Custom Manager for Teacher-specific queries
+class TeacherManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
+
+    def all_teachers(self):
+        \"""Returns all Teacher objects.\"""
+        return self.get_queryset().all()
+
+    def count_teachers(self):
+        \"""Returns the total count of Teacher objects.\"""
+        return self.get_queryset().count()
+
+    def get_headmaster(self):
+        \"""Returns the Headmaster, or None if not found.\"""
+        try:
+            return self.get_queryset().get(designation=self.model.DESIGNATION_HEADMASTER)
+        except self.model.DoesNotExist:
+            return None
+
+    def get_assistant_headmaster(self):
+        \"""Returns the Assistant Headmaster, or None if not found.\"""
+        try:
+            return self.get_queryset().get(designation=self.model.DESIGNATION_ASSISTANT_HEADMASTER)
+        except self.model.DoesNotExist:
+            return None
+
+    # For getting a single teacher by PK, it's generally best to use
+    # Teacher.objects.get(pk=pk) (will raise DoesNotExist)
+    # or Teacher.objects.filter(pk=pk).first() (returns None if not found)
+    # or get_object_or_404(Teacher, pk=pk) in views.
+    # So, a dedicated manager method for this might be redundant.
+
+
+class Teacher(models.Model):
+    \"""
+    Model for storing teacher information in the school management system,
+    including their personal details, professional designation, and contact information.
+    \"""
+
+    # Constants for database values (short, consistent)
+    DESIGNATION_HEADMASTER = "headmaster"
+    DESIGNATION_ASSISTANT_HEADMASTER = "asst_headmaster"
+    DESIGNATION_ASSISTANT_TEACHER = "asst_teacher"
+    DESIGNATION_INSTRUCTOR = "instructor"
+
+    # Choices for the 'designation' field (DB value, Human-readable)
+    DESIGNATION_CHOICES = [
+        (DESIGNATION_HEADMASTER, _("Headmaster")),
+        (DESIGNATION_ASSISTANT_HEADMASTER, _("Assistant Headmaster")),
+        (DESIGNATION_ASSISTANT_TEACHER, _("Assistant Teacher")),
+        (DESIGNATION_INSTRUCTOR, _("Instructor")),
+    ]
+
+    name = models.CharField(_("Name"), max_length=254)
+    designation = models.CharField(
+        _("Designation"),
+        max_length=20, # More appropriate length
+        choices=DESIGNATION_CHOICES,
+        default=DESIGNATION_ASSISTANT_TEACHER,
+    )
+    fb_link = models.URLField(
+        _("Facebook Profile URL"),
+        max_length=255,
+        blank=True,
+        null=True, # Prefer null=True for optional URLFields
+        # Do not use default='#' as it's not a valid 'missing' state.
+        # Handle absence in templates: {% if teacher.fb_link %}
+    )
+    linkedIn_link = models.URLField(
+        _("LinkedIn Profile URL"),
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    phone_number = models.CharField(_("Phone"), max_length=30, blank=True, null=True) # Realistic length
+    email = models.EmailField(_("Email"), max_length=254, blank=True, null=True)
+    picture = models.ImageField(
+        _("Profile Picture"),
+        upload_to="teachers/profile_pics/", # Better organized path
+        blank=True,
+        null=True # Make photo optional if it's not strictly required
+    )
+
+    objects = TeacherManager() # Attach the custom manager
+
+    class Meta:
+        verbose_name = _("Teacher")
+        verbose_name_plural = _("Teachers")
+        ordering = ['name'] # Default ordering for consistency
+
+    def __str__(self):
+        # Human-readable representation for admin and debugging
+        return f"{self.name} ({self.get_designation_display()})"
+
+    def get_absolute_url(self):
+        # Assumes a namespaced URL like 'core:teacher_detail'
+        return reverse("core:teacher_detail", kwargs={"pk": self.pk})
+
+    # The @staticmethod methods are now moved to TeacherManager.
+    # So remove them from here!
+"""
+
 class School(models.Model):
     """school info"""
 
