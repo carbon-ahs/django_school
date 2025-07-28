@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+{% include "core/navbar.html" %}
+<main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>শিক্ষক মন্ডলী (Vocational)</h2>
+        {% comment %} <p>{% lorem 1 b random %} </p> {% endcomment %}
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    {% comment %} <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="member">
+                  <img src="{% static 'assets/img/trainers/sakil.jpg' %}" class="img-fluid" alt="">
+                  <div class="member-content">
+                    <h4>Masum Billah Shakil</h4>
+                    <span>Headmaster</span>
+                    <div class="social">
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                      <br>
+                      <a href=""><i class="bi bi-whatsapp"> 019613335525</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+        </div>
+      </div>
+    </section><!-- End Trainers Section --> {% endcomment %}
+    
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% if teachers|length == 0 %}
+            <p>No Teachers found</p>
+          {% endif %}
+          {% for teacher in teachers %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              {% comment %} <img src="{% static 'assets/img/trainers/sakil.jpg' %}" class="img-fluid" alt=""> {% endcomment %}
+              <img src="{{teacher.picture.url}}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4><a href="/teacher/{{ teacher.id }}/">{{teacher.name}}</a></h4>
+                <span>{{teacher.designation}}</span>
+                <div class="social">
+                          <a href=""><i class="bi bi-facebook"></i></a>
+                          <a href=""><i class="bi bi-linkedin"></i></a>
+                          <br>
+                          <a href=""><i class="bi bi-whatsapp"> {{teacher.phone_number}}</i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+        </section><!-- End Trainers Section -->
+      </main><!-- End #main -->
+
+      
+      
+      {% endblock content %}

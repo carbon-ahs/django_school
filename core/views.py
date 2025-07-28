@@ -61,6 +61,15 @@ def teachers(request):
     }
     return render(request, "core/teachers.html", context=context)
 
+def teachers_vocational(request):
+    school = School.get_school()
+    teachers_queary_set = Teacher.objects.all()
+    context = {
+        "test": "TEST",
+        "teachers": teachers_queary_set,
+        "school": school,
+    }
+    return render(request, "core/teachers_vocational.html", context=context)
 
 def single_teacher(request, pk):
     school = School.get_school()
