@@ -22,4 +22,9 @@ py manage.py runserver
 
 # 6. collect static file
 python manage.py collectstatic
+
+# 7 run command with waittress
+ waitress-serve --port=8000 django_project.wsgi:application
+
+ 
 ```
