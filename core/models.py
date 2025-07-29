@@ -9,13 +9,19 @@ class Teacher(models.Model):
 
     HEAD_OF_INSTITUTION = "Headmaster"
     VICE_HEAD_OF_INSTITUTION = "Assistant Headmaster"
-    TEACHER = "Asstistant Teacher"
-    INSTRUCTOR = "Instuctor"
+    TEACHER = "Assistant Teacher"
+    INSTRUCTOR = "Instructor"
+    LAB_ASSISTANT = "Lab Assistant"
+    OFFICE_ASSISTANT = "Office Assistant / Computer Operator"
+    DEMONSTRATOR = "Demonstrator"
     DESIGNATIONS = [
         ("Headmaster", HEAD_OF_INSTITUTION),
         ("Assistant Headmaster", VICE_HEAD_OF_INSTITUTION),
-        ("Asstistant Teacher", TEACHER),
-        ("Instuctor", INSTRUCTOR),
+        ("Assistant Teacher", TEACHER),
+        ("Instructor", INSTRUCTOR),
+        ("Lab Assistant", LAB_ASSISTANT),
+        ("Office Assistant / Computer Operator", OFFICE_ASSISTANT),
+        ("Demonstrator", DEMONSTRATOR),
     ]
 
     name = models.CharField(_("Name"), max_length=254)
