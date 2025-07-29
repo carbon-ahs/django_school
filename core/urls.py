@@ -22,4 +22,5 @@ urlpatterns = [
         "management_committee/", views.management_committee, name="management_committee"
     ),
     path("staff_members/", views.staff_members, name="staff_members"),
+    path("under_construction/", views.under_construction, name="under_construction"),
 ] 

@@ -144,3 +144,10 @@ def test(request):
         "test": "TEST",
     }
     return render(request, "test/test.html", context=context)
+
+
+def under_construction(request):
+    context = {
+        "test": "TEST",
+    }
+    return render(request, "core/under_construction.html", context=context)
