@@ -1,6 +1,8 @@
 ## Backend part of school site. 
 
 This project uses python 3.12
+for prod 3.11.12 needed.
+link: https://github.com/adang1345/PythonWindows/blob/master/3.11.12/python-3.11.12-amd64-full.exe
 
 ## Run commands
 
