@@ -3,7 +3,7 @@
 This project uses python 3.12
 for prod 3.11.12 needed.
 link: https://github.com/adang1345/PythonWindows/blob/master/3.11.12/python-3.11.12-amd64-full.exe
-
+guide: https://youtu.be/h2w8oNw_W80?si=rodPqaHJL-NygxUq
 ## Run commands
 
 ```python
