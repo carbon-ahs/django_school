@@ -7,8 +7,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="container">
-        <h2>Our Honarable Teacher</h2>
-        {% comment %} <p>{% lorem 1 b random %} </p> {% endcomment %}
+        <h2>Teacher Profile</h2>
       </div>
     </div><!-- End Breadcrumbs -->
     <!-- ======= Trainers Section ======= -->
@@ -18,7 +17,7 @@
         <div class="row" data-aos="zoom-in">
           <div class="col-md-6">
             <div>
-              <img src="{{teacher.picture_url.url}}" style="height:400px; width:400px; object-fit: cover;" alt="">
+              <img src="{{teacher.get_picture}}" style="height:400px; width:400px; object-fit: cover;" alt="">
             </div>
           </div>
           <div class="col-md-6">

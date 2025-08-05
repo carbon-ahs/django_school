@@ -26,7 +26,13 @@ py manage.py runserver
 python manage.py collectstatic
 
 # 7 run command with waitress
- waitress-serve --port=8000 django_project.wsgi:application
-
+waitress-serve --port=8000 django_project.wsgi:application
  
+```
+
+## Migration migrat
+
+```
+py manage.py makemigrations
+py manage.py migrate
 ```

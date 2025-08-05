@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from django_project.settings import STATIC_URL
+
 
 class Teacher(models.Model):
     """model class"""
@@ -35,19 +37,17 @@ class Teacher(models.Model):
         max_length=255,
         null=True,
         blank=True,
-        default="#",
     )
     linkedIn_link = models.CharField(
         _("LinkedIn"),
         max_length=255,
         null=True,
         blank=True,
-        default="#",
     )
     phone_number = models.CharField(_("Phone"), max_length=255, null=True, blank=True)
     email = models.EmailField(_("Email"), max_length=254, null=True, blank=True)
     picture = models.ImageField(
-        upload_to="images/",
+        upload_to="images/", null=True, blank=True,
     )
 
     class Meta:
@@ -59,6 +59,18 @@ class Teacher(models.Model):
 
     def get_absolute_url(self):
         return reverse("Teacher_detail", kwargs={"pk": self.pk})
+    
+    # def get_picture(self):
+    #     if self.picture:
+    #         return self.picture
+    #     else:
+    #         return 'static/assets/img/teacher_default_avatar.jpg'
+
+    def get_picture(self):
+        if self.picture and self.picture.url:
+            return self.picture.url
+        else:
+            return STATIC_URL + 'assets/img/teacher_default_avatar.jpg'
 
     @staticmethod
     def get_all_teachers():
