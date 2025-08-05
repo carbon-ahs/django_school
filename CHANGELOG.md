@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v1.1.0] - 2025-08-05
 ### New Features
 * **Stuff Members:** Added stuff member page
+* **School History:** Added school history as rich text field
 ### Improvment
 * **404 page:** Added custom 404 page
 
