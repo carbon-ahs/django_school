@@ -11,19 +11,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
-## [v1.1.0] - 2025-07-20
+## [v1.1.0] - 2025-08-05
 ### New Features
-* **Blog Module:** Added a complete blogging platform with support for creating, editing, and publishing articles.
-    * `apps/blog/`: Created a new app with models for `Post`, `Category`, and `Tag`.
-    * `templates/blog/`: Added templates for post list, detail, and category views.
-* **Contact Us Page:** Implemented a functional contact form that sends user inquiries to the site administrator.
-    * `apps/contact/`: Created a new app for the contact form functionality.
+* **Stuff Members:** Added stuff member page
+### Improvment
+* **404 page:** Added custom 404 page
 
-### Improvements
-* Updated the site's styling to a more modern and clean design.
-    * `static/css/styles.css`: Overhauled CSS stylesheet.
-* Improved the navigation bar to be responsive on mobile devices.
-    * `templates/base.html`: Added a responsive menu toggle using JavaScript.
 
 ---
 
