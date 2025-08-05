@@ -36,3 +36,10 @@ waitress-serve --port=8000 django_project.wsgi:application
 py manage.py makemigrations
 py manage.py migrate
 ```
+
+## Some quick commands
+```
+source .venv/Scripts/activate
+py manage.py runserver
+
+```

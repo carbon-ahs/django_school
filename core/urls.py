@@ -24,4 +24,5 @@ urlpatterns = [
     ),
     path("staff_members/", views.staff_members, name="staff_members"),
     path("under_construction/", views.under_construction, name="under_construction"),
+    path("school_history/", views.school_history, name="school_history"),
 ] 

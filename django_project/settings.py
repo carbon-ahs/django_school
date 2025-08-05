@@ -18,6 +18,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    # third_party
+    "django_prose_editor",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # own_app

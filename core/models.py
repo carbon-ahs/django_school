@@ -2,7 +2,7 @@ from datetime import datetime
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-
+from django_prose_editor.fields import ProseEditorField
 from django_project.settings import STATIC_URL
 
 
@@ -119,6 +119,39 @@ class School(models.Model):
     description_title = models.CharField(_("Desciption Title"), max_length=50)
     description = models.TextField(_("Description"))
     headmaster_speech = models.TextField(_("Headmaster Speech"), null=True, blank=True)
+    history = ProseEditorField(
+        _("History"),
+        extensions={# Core text formatting
+            "Bold": True,
+            "Italic": True,
+            "Strike": True,
+            "Underline": True,
+            "HardBreak": True,
+
+            # Structure
+            "Heading": {
+                "levels": [1, 2, 3]  # Only allow h1, h2, h3
+            },
+            "BulletList": True,
+            "OrderedList": True,
+            "Blockquote": True,
+
+            # Advanced extensions
+            "Link": {
+                "enableTarget": True,  # Enable "open in new window"
+                "protocols": ["http", "https", "mailto"],  # Limit protocols
+            },
+            "Table": True,
+
+            # Editor capabilities
+            "History": True,       # Enables undo/redo
+            "HTML": True,          # Allows HTML view
+            "Typographic": True,   # Enables typographic chars
+        },
+        sanitize=True, 
+        null=True,
+        blank=True,
+    )
     student_count = models.IntegerField(_("Student Count"))
     teacher_count = models.IntegerField(_("Teacher Count"))
     class_count = models.IntegerField(_("Class Count"))

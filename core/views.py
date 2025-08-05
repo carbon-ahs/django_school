@@ -164,3 +164,11 @@ def under_construction(request):
 def page_not_found(request, exception):
     print("Page not found view called")
     return render(request, 'core/404.html', status=404)
+
+def school_history(request):
+    school = School.get_school()
+    context = {
+        "test": "TEST",
+        "school": school,
+    }
+    return render(request, "core/school_history.html", context=context)
