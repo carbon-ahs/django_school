@@ -110,7 +110,6 @@ class Teacher(models.Model):
         return teacher
 
 
-
 class School(models.Model):
     """school info"""
 
@@ -202,3 +201,102 @@ class ClassRoutine(models.Model):
     def __str__(self):
         """Unicode representation of ClassRoutine."""
         return str(self.title)
+
+
+class StuffManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
+
+    def get_all_stuffs(self):
+        """Returns all Stuff objects."""
+        return self.get_queryset().all()
+
+    def count_stuffs(self):
+        """Returns the total count of Stuff objects."""
+        return self.get_queryset().count()
+    
+    def get_picture(self):
+        if self.picture and self.picture.url:
+            return self.picture.url
+        else:
+            return STATIC_URL + 'assets/img/default_avatar.jpg'
+
+    # For getting a single teacher by PK, it's generally best to use
+    # Teacher.objects.get(pk=pk) (will raise DoesNotExist)
+    # or Teacher.objects.filter(pk=pk).first() (returns None if not found)
+    # or get_object_or_404(Teacher, pk=pk) in views.
+    # So, a dedicated manager method for this might be redundant.
+
+class Stuff(models.Model):
+    """
+    Model for storing stuff information in the school management system,
+    including their personal details, professional designation, and contact information.
+    """
+
+    # Constants for database values (short, consistent)
+    DESIGNATION_OFFICE_ASSISTANT = "office_assistant"
+    DESIGNATION_CLEANER = "cleaner"
+    DESIGNATION_SECURITY_GUARD = "security_guard"
+    DESIGNATION_AYA = "AYA"
+    DESIGNATION_NIGHT_GUARD = "night_guard"
+    DESIGNATION_SHOP_ASSISTANT = "shop_assistant"
+    # DESIGNATION_ = ""
+
+
+    # Choices for the 'designation' field (DB value, Human-readable)
+    DESIGNATION_CHOICES = [
+        (DESIGNATION_OFFICE_ASSISTANT, _("Office Assistant")),
+        (DESIGNATION_CLEANER, _("Cleaner")),
+        (DESIGNATION_SECURITY_GUARD, _("Security Guard")),
+        (DESIGNATION_AYA, _("AYA")),
+        (DESIGNATION_NIGHT_GUARD, _("Night Guard")),
+        (DESIGNATION_SHOP_ASSISTANT, _("Shop Assistant")),
+    ]
+
+    name = models.CharField(_("Name"), max_length=254)
+    designation = models.CharField(
+        _("Designation"),
+        max_length=20, 
+        choices=DESIGNATION_CHOICES,
+    )
+    fb_link = models.URLField(
+        _("Facebook Profile URL"),
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    linkedIn_link = models.URLField(
+        _("LinkedIn Profile URL"),
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+    phone_number = models.CharField(_("Phone"), max_length=30, blank=True, null=True) # Realistic length
+    email = models.EmailField(_("Email"), max_length=254, blank=True, null=True)
+    picture = models.ImageField(
+        _("Profile Picture"),
+        upload_to="stuff/profile_pics/", # Better organized path
+        blank=True,
+        null=True 
+    )
+
+    objects = StuffManager() # Attach the custom manager
+
+    class Meta:
+        verbose_name = _("Stuff")
+        verbose_name_plural = _("Stuffs")
+        ordering = ['name'] # Default ordering for consistency
+
+    def __str__(self):
+        # Human-readable representation for admin and debugging
+        return f"{self.name} ({self.get_designation_display()})"
+    
+    def get_picture(self):
+        if self.picture and self.picture.url:
+            return self.picture.url
+        else:
+            return STATIC_URL + 'assets/img/default_avatar.png'
+
+
+    # The @staticmethod methods are now moved to TeacherManager.
+    # So remove them from here!

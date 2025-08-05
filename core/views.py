@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from core.models import Teacher, School, ClassRoutine, Notice
+from core.models import Stuff, Teacher, School, ClassRoutine, Notice
 
 
 def home(request):
@@ -104,9 +104,14 @@ def management_committee(request):
 
 def staff_members(request):
     school = School.get_school()
+    stuff_query_set = Stuff.objects.get_all_stuffs()
+    # stuff_query_set = Stuff.get_all_staff()
+    # print(stuff_query_set[0].get_picture())
     context = {
         "test": "staff_members",
         "school": school,
+        "stuffs": stuff_query_set,
+
     }
     return render(request, "core/staff_members.html", context=context)
 
@@ -148,8 +153,10 @@ def test(request):
 
 
 def under_construction(request):
+    school = School.get_school()
     context = {
         "test": "TEST",
+        "school": school,
     }
     return render(request, "core/under_construction.html", context=context)
 

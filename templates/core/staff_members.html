@@ -11,20 +11,36 @@
       </div>
     </div><!-- End Breadcrumbs -->
 
+    
     <!-- ======= Trainers Section ======= -->
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
-            <div class="bg-light p-5 rounded-lg m-3">
-                {% comment %} <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> {% endcomment %}
-                <hr class="my-4">
-                <img src={% static 'assets\img\coming_soon.png' %} class="img-fluid" alt="">
-                <hr class="my-4">
-                {% comment %} <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> {% endcomment %}
-                {% comment %} <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> {% endcomment %}
-            </div>
-        </div>
-    </section><!-- End Trainers Section -->
-  </main><!-- End #main -->
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% if stuffs|length == 0 %}
+            <p>No Stuff found</p>
+          {% endif %}
+          {% for stuff in stuffs %}
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{{stuff.get_picture}}" class="img-fluid img-thumbnail" style="object-fit: contain;"  alt="">
+              <div class="member-content">
+                <h4><a href="/stuff/{{ stuff.id }}/">{{stuff.name}}</a></h4>
+                <span>{{stuff.designation}}</span>
+                <div class="social">
+                          <a href=""><i class="bi bi-facebook"></i></a>
+                          <a href=""><i class="bi bi-linkedin"></i></a>
+                          <br>
+                          <a href=""><i class="bi bi-whatsapp"> {{stuff.phone_number}}</i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+        </section><!-- End Trainers Section -->
+      </main><!-- End #main -->
 
+      
 
 {% endblock content %}
