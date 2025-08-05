@@ -8,8 +8,9 @@ def home(request):
     teacher_count = Teacher.get_teachers_count()
     headmaster = Teacher.get_headmaster()
     asst_headmaster = Teacher.get_asst_headmaster()
-    third_teacher = Teacher.get_single_teacher(7)
+    third_teacher = Teacher.get_single_teacher(3)
     marquee_flag = settings.DEBUG
+    marquee_flag = True
 
     context = {
         "test": "TEST",
