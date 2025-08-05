@@ -1,97 +1,61 @@
 <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
+  <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{% url "home" %}">{{school.name}}</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    <h1 class="logo me-auto"><a href="{% url "home" %}">{{school.name}}</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a href="{% url 'home' %}">প্রথম পাতা</a></li>
-          <li class="dropdown"><a href="#"><span>বিদ্যালয়ের তথ্য</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'under_construction' %}">বিদ্যালয়ের ইতিহাস</a></li>
-              <li><a href="{% url 'under_construction' %}">প্রধান শিক্ষকের বাণী</a></li>
-              <li><a href="{% url 'management_committee' %}">ম্যানেজমেন্ট কমিটি</a></li>
-              <li class="dropdown"><a href="#"><span>জনবল</span><i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="{% url 'teachers' %}">শিক্ষক মন্ডলী</a></li>
-                  <li><a href="{% url 'staff_members' %}">অন্যান্য কর্মচারী</a></li>
-                  <li><a href="#">Deep Drop Down </a></li>
-                </ul>
-              </li>
-              <li><a href="{% url 'under_construction' %}">সম্পদ</a></li>
-
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>কার্যাবলী</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'under_construction' %}">পরীক্ষার রুটিন</a></li>
-              <li><a href="{% url 'under_construction' %}">ছাত্র-ছাত্রীর পরীক্ষার রেকর্ড</a></li>
-              <li><a href="{% url 'under_construction' %}">একাডেমিক পারফরম্যান্স</a></li>
-              <li><a href="{% url 'under_construction' %}">ক্লাস রুটিন</a></li>
-              <li><a href="{% url 'under_construction' %}">পাঠ টীকা</a></li>
-              <li><a href="{% url 'under_construction' %}">উপস্থিতি</a></li>
-              <li><a href="{% url 'under_construction' %}">প্রকাশনা</a></li>
-              <li><a href="{% url 'under_construction' %}">সহপাঠ ক্রমিক কার্যাবলী</a></li>
-              
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>একাডেমিক রেকর্ড</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'under_construction' %}">পাবলিক পরীক্ষা</a></li>
-              <li><a href="{% url 'under_construction' %}">ভর্তি পরীক্ষা</a></li>
-              <li><a href="{% url 'under_construction' %}">সাময়িক পরীক্ষা</a></li>
-              <li><a href="{% url 'under_construction' %}">টিউটরিয়াল পরীক্ষা</a></li>
-              <li><a href="{% url 'under_construction' %}">কুইজ টেস্ট</a></li>
-
-              
-            </ul>
-          </li> 
-          <li class="dropdown"><a href="#"><span>ক্রিয়াকলাপ</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'under_construction' %}">বার্ষিক অনুষ্ঠান</a></li>
-              <li><a href="{% url 'under_construction' %}">শিক্ষা সফর</a></li>
-              <li><a href="{% url 'under_construction' %}">ক্রীড়া</a></li>
-              <li><a href="{% url 'under_construction' %}">ক্লাব</a></li>
-              <li><a href="{% url 'under_construction' %}">ছুটি</a></li>
-              <li><a href="{% url 'under_construction' %}">শিক্ষা পঞ্জিকা</a></li>
-              
-            </ul>
-          </li>
-          <li class="dropdown"><a href="{% url 'under_construction' %}">যোগাযোগ</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>নোটিশ</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'notice' %}">নোটিশ</a></li>
-              <li><a href="{% url 'class_routine' %}">ক্লাস রুটিন</a></li>
-            </ul>
-          </li>  -->
-          
-          <!-- 
-            <li><a href="{% url 'about' %}">আমাদের সম্পর্কে</a></li>
-            <li class="dropdown"><a href="#"><span>Academic Info</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-          {% comment %} <li><a href="contact.html">Contact</a></li> {% endcomment %}
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <!-- <a href="courses.html" class="get-started-btn">Get Started</a> -->
-
-    </div>
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a href="{% url 'home' %}">প্রথম পাতা</a></li>
+        <li class="dropdown"><a href="#"><span>বিদ্যালয়ের তথ্য</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'under_construction' %}">বিদ্যালয়ের ইতিহাস</a></li>
+            <li><a href="{% url 'headmaster_speech' %}">প্রধান শিক্ষকের বাণী</a></li>
+            <li><a href="{% url 'management_committee' %}">ম্যানেজমেন্ট কমিটি</a></li>
+            <li class="dropdown"><a href="#"><span>জনবল</span><i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="{% url 'teachers' %}">শিক্ষক মন্ডলী</a></li>
+                <li><a href="{% url 'staff_members' %}">অন্যান্য কর্মচারী</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'under_construction' %}">সম্পদ</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#"><span>কার্যাবলী</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'under_construction' %}">পরীক্ষার রুটিন</a></li>
+            <li><a href="{% url 'under_construction' %}">ছাত্র-ছাত্রীর পরীক্ষার রেকর্ড</a></li>
+            <li><a href="{% url 'under_construction' %}">একাডেমিক পারফরম্যান্স</a></li>
+            <li><a href="{% url 'class_routine' %}">ক্লাস রুটিন</a></li>
+            <li><a href="{% url 'under_construction' %}">পাঠ টীকা</a></li>
+            <li><a href="{% url 'under_construction' %}">উপস্থিতি</a></li>
+            <li><a href="{% url 'under_construction' %}">প্রকাশনা</a></li>
+            <li><a href="{% url 'under_construction' %}">সহপাঠ ক্রমিক কার্যাবলী</a></li>            
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#"><span>একাডেমিক রেকর্ড</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'under_construction' %}">পাবলিক পরীক্ষা</a></li>
+            <li><a href="{% url 'under_construction' %}">ভর্তি পরীক্ষা</a></li>
+            <li><a href="{% url 'under_construction' %}">সাময়িক পরীক্ষা</a></li>
+            <li><a href="{% url 'under_construction' %}">টিউটরিয়াল পরীক্ষা</a></li>
+            <li><a href="{% url 'under_construction' %}">কুইজ টেস্ট</a></li>
+          </ul>
+        </li> 
+        <li class="dropdown"><a href="#"><span>ক্রিয়াকলাপ</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'under_construction' %}">বার্ষিক অনুষ্ঠান</a></li>
+            <li><a href="{% url 'under_construction' %}">শিক্ষা সফর</a></li>
+            <li><a href="{% url 'under_construction' %}">ক্রীড়া</a></li>
+            <li><a href="{% url 'under_construction' %}">ক্লাব</a></li>
+            <li><a href="{% url 'under_construction' %}">ছুটি</a></li>
+            <li><a href="{% url 'under_construction' %}">শিক্ষা পঞ্জিকা</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="{% url 'under_construction' %}">যোগাযোগ</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
   </header><!-- End Header -->
