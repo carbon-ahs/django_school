@@ -151,3 +151,8 @@ def under_construction(request):
         "test": "TEST",
     }
     return render(request, "core/under_construction.html", context=context)
+
+
+def page_not_found(request, exception):
+    print("Page not found view called")
+    return render(request, 'core/404.html', status=404)
